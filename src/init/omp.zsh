@@ -46,3 +46,15 @@ function export_poshconfig() {
     fi
     ::OMP:: --config $POSH_THEME --print-config --config-format $format > $1
 }
+
+function export_poshimage() {
+    author=$1
+    rprompt_offset=$2
+    if [ -z "$rPromptOffset" ]; then
+      rprompt_offset=0
+    fi
+    if [ -n "$author" ]; then
+      author="--author=$author"
+    fi
+    ::OMP:: --config $POSH_THEME --export-png --shell shell --rprompt-offset $rprompt_offset $author
+}

@@ -36,3 +36,15 @@ function export_poshconfig
   end
   ::OMP:: --config $posh_theme --print-config --config-format $format > $file_name
 end
+
+function export_poshimage
+  set -l author $argv[1]
+  set -l rprompt_offset $argv[2]
+  if not test -n "$rprompt_offset"
+    set rprompt_offset 0
+  end
+  if test -n "$author"
+    set author "--author=$author"
+  end
+  ::OMP:: --config $posh_theme --export-png --shell shell --rprompt-offset=$rprompt_offset $author
+end
